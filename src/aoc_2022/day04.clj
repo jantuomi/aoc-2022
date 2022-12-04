@@ -1,7 +1,7 @@
 (ns aoc-2022.day04)
-(require '[aoc-2022.utils :refer :all])
 (require '[clojure.java.io :as io])
 (require '[clojure.string :as str])
+(require '[aoc-2022.utils :refer :all])
 
 (defn parse-rows [rows]
   (->> rows
@@ -23,7 +23,7 @@
        count))
 
 (defn assignment-overlaps [[a1 a2 b1 b2]]
-  (not (or (> a1 b2) (> b1 a2))))
+  (nor (> a1 b2) (> b1 a2)))
 
 (def task2
   (chain
@@ -33,7 +33,6 @@
 
 (with-open [rdr (io/reader "resources/day04_actual.txt")]
   (let [rows (line-seq rdr)]
-    (do
-      (println "task1:" (task1 rows))
-      (println "task2:" (task2 rows))
-      :done)))
+    (println "task1:" (task1 rows))
+    (println "task2:" (task2 rows))
+    :done))

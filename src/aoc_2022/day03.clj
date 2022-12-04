@@ -1,6 +1,6 @@
 (ns aoc-2022.day03)
 (require '[clojure.java.io :as io])
-(require '[aoc-2022.utils :as utils])
+(require '[aoc-2022.utils :refer :all])
 
 (defn compartments [sack]
   (let [n (count sack)]
@@ -12,7 +12,7 @@
         occurs (fn [hs] (filter #(= needle %) hs))]
     (cond
       (nil? needle) nil
-      (not (empty? (occurs haystack))) needle
+      (seq(occurs haystack)) needle
       :else (find-common (rest needles) haystack))))
 
 (defn priority-of [item]
@@ -35,8 +35,8 @@
       (nil? needle)
           nil
       (and
-       (not (empty? (occurs hs1)))
-       (not (empty? (occurs hs2))))
+       (seq (occurs hs1))
+       (seq (occurs hs2)))
           needle
       :else
           (find-common2 (rest needles) hs1 hs2))))
@@ -50,6 +50,5 @@
 
 (with-open [rdr (io/reader "resources/day03_actual.txt")]
   (let [rows (line-seq rdr)]
-    (do
-      (println "task1:" (task1 rows))
-      (println "task2:" (task2 rows)))))
+    (println "task1:" (task1 rows))
+    (println "task2:" (task2 rows))))

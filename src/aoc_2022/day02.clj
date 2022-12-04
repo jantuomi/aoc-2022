@@ -1,6 +1,6 @@
 (ns aoc-2022.day02)
 (require '[clojure.java.io :as io])
-(require '[aoc-2022.utils :as utils])
+(require '[aoc-2022.utils :refer :all])
 
 (defn score-round-result [own opp]
   (cond
@@ -16,9 +16,6 @@
   {:rock     1
    :paper    2
    :scissors 3})
-
-(defn score-round [own opp]
-  (+ (score-round-result own opp) (get score-own-play own)))
 
 (def plays
   {\A :rock
@@ -63,6 +60,5 @@
 
 (with-open [rdr (io/reader "resources/day02_actual.txt")]
   (let [rows (line-seq rdr)]
-    (do
-      (println "task1:" (task1 rows))
-      (println "task2:" (task2 rows)))))
+    (println "task1:" (task1 rows))
+    (println "task2:" (task2 rows))))

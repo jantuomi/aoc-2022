@@ -33,15 +33,16 @@
    `task1` and `task2` should take a list of strings as their first argument."
   [day task1 task2]
   (let [{:keys [sample actual]} (read-aoc day)]
-    (do
-      (println "task1 @ sample:" (task1 sample))
-      (println "task1 @ actual:" (task1 actual))
-      (println "task2 @ sample:" (task2 sample))
-      (println "task2 @ actual:" (task2 actual)))))
+    (println "task1 @ sample:" (task1 sample))
+    (println "task1 @ actual:" (task1 actual))
+    (println "task2 @ sample:" (task2 sample))
+    (println "task2 @ actual:" (task2 actual))))
 
 ; Functions
 
-(defn chain "forward compose: comp fns in reverse order" [& fns]
+(defn chain
+  "forward compose: comp fns in reverse order"
+  [& fns]
   (apply comp (reverse fns)))
 
 ; Logic

@@ -12,14 +12,14 @@
 
 (defn task1 [rows]
   (->> rows
-       (map (fn [row] (if (not (empty? row)) (Long/valueOf row) "")))
+       (map (fn [row] (if (seq row) (Long/valueOf row) "")))
        (split-by "" [])
        (map (fn [calories] (reduce + calories)))
        (reduce max)))
 
 (defn task2 [rows]
   (->> rows
-       (map (fn [row] (if (not (empty? row)) (Long/valueOf row) "")))
+       (map (fn [row] (if (seq row) (Long/valueOf row) "")))
        (split-by "" [])
        (map (fn [calories] (reduce + calories)))
        sort
@@ -29,6 +29,5 @@
 
 (with-open [rdr (io/reader "resources/day01_actual.txt")]
   (let [rows (line-seq rdr)]
-    (do
-      (println "task1:" (task1 rows))
-      (println "task2:" (task2 rows)))))
+    (println "task1:" (task1 rows))
+    (println "task2:" (task2 rows))))
