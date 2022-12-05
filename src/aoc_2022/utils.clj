@@ -21,6 +21,9 @@
 
 (def split-by #(split-by' %1 '() %2))
 
+(defn transpose [m]
+  (apply mapv vector m))
+
 ; Advent of Code specific
 
 (defn read-aoc [day]
